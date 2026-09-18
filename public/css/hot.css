@@ -1,0 +1,312 @@
+/* ════════════════════════════════════════════════
+   舞萌DX 热门点歌榜样式
+   ════════════════════════════════════════════════ */
+
+@font-face {
+  font-family: 'NewRodin';
+  src: url('/fonts/FOT_NewRodin_Pro_EB.otf') format('opentype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'SweiBell';
+  src: url('/fonts/SweiBellLegCJKsc-Black.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'SourceHanBold';
+  src: url('/fonts/SOURCEHANSANSSC-BOLD.OTF') format('opentype');
+}
+
+:root {
+  --c-gold: #ffd700;
+  --c-silver: #c0c0c0;
+  --c-bronze: #cd7f32;
+  --bg: #0d0c14;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'SourceHanBold', 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: #fff;
+  overflow: hidden;
+  user-select: none;
+}
+
+#hot-display {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 24px;
+  gap: 16px;
+}
+
+/* ── 头部 ── */
+.hot-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  flex-shrink: 0;
+}
+
+.hot-header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #ffd700, #ff9a00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hot-sub {
+  font-family: 'NewRodin', sans-serif;
+  font-size: 14px;
+  color: #8a87a3;
+  background: rgba(255,255,255,.06);
+  padding: 2px 10px;
+  border-radius: 6px;
+}
+
+/* ── 前三名展示区 ── */
+.top-three {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 20px;
+  flex: 0 0 auto;
+  min-height: 320px;
+}
+
+.podium-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  position: relative;
+  transition: all .3s;
+}
+
+.podium-card.rank-1 {
+  border-color: var(--c-gold);
+  background: rgba(255,215,0,.06);
+  box-shadow: 0 0 30px rgba(255,215,0,.15);
+  min-height: 300px;
+}
+
+.podium-card.rank-2 {
+  border-color: var(--c-silver);
+  background: rgba(192,192,192,.05);
+  min-height: 270px;
+}
+
+.podium-card.rank-3 {
+  border-color: var(--c-bronze);
+  background: rgba(205,127,50,.05);
+  min-height: 270px;
+}
+
+.podium-rank {
+  font-family: 'NewRodin', sans-serif;
+  font-size: 48px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.podium-card.rank-1 .podium-rank { color: var(--c-gold); text-shadow: 0 0 20px rgba(255,215,0,.5); }
+.podium-card.rank-2 .podium-rank { color: var(--c-silver); }
+.podium-card.rank-3 .podium-rank { color: var(--c-bronze); }
+
+.podium-cover {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 20px rgba(0,0,0,.5);
+}
+
+.podium-card.rank-1 .podium-cover { width: 140px; height: 140px; }
+
+.podium-cover-placeholder {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #1a1925, #221f30);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  color: #444;
+}
+
+.podium-card.rank-1 .podium-cover-placeholder { width: 140px; height: 140px; }
+
+.podium-title {
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.podium-card.rank-1 .podium-title { font-size: 18px; }
+
+.podium-artist {
+  font-size: 12px;
+  color: #8a87a3;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.podium-count {
+  font-family: 'NewRodin', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 8px;
+}
+
+.podium-card.rank-1 .podium-count { background: rgba(255,215,0,.15); color: var(--c-gold); }
+.podium-card.rank-2 .podium-count { background: rgba(192,192,192,.12); color: var(--c-silver); }
+.podium-card.rank-3 .podium-count { background: rgba(205,127,50,.12); color: var(--c-bronze); }
+
+/* ── 滚动列表区 (4~10名) ── */
+.scroll-list {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  border-top: 1px solid rgba(255,255,255,.06);
+  padding-top: 12px;
+}
+
+.scroll-track {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.scroll-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid transparent;
+  transition: border-color .15s;
+  flex-shrink: 0;
+}
+
+.scroll-rank {
+  font-family: 'NewRodin', sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: #555;
+  min-width: 36px;
+  text-align: center;
+}
+
+.scroll-cover {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.scroll-cover-placeholder {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: #1a1925;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #444;
+  flex-shrink: 0;
+}
+
+.scroll-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.scroll-title {
+  font-size: 14px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.scroll-artist {
+  font-size: 11px;
+  color: #8a87a3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.scroll-count {
+  font-family: 'NewRodin', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #e94560;
+  flex-shrink: 0;
+}
+
+/* ── 空状态 ── */
+.empty-hint {
+  text-align: center;
+  padding: 60px 20px;
+  color: #444;
+  font-size: 18px;
+}
+
+/* ── 滚动动画 ── */
+@keyframes scrollUp {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(var(--scroll-distance, -50%)); }
+}
+
+/* ── 响应式 ── */
+@media (max-width: 768px) {
+  #hot-display { padding: 12px; gap: 10px; }
+
+  .top-three {
+    gap: 8px;
+    min-height: 240px;
+  }
+
+  .podium-card { padding: 10px 12px; }
+  .podium-card.rank-1 { min-height: 230px; }
+  .podium-card.rank-2,
+  .podium-card.rank-3 { min-height: 210px; }
+
+  .podium-cover,
+  .podium-cover-placeholder { width: 80px; height: 80px; }
+  .podium-card.rank-1 .podium-cover,
+  .podium-card.rank-1 .podium-cover-placeholder { width: 96px; height: 96px; }
+
+  .podium-rank { font-size: 36px; }
+  .podium-title { font-size: 13px; max-width: 120px; }
+  .podium-artist { font-size: 10px; max-width: 120px; }
+  .podium-count { font-size: 16px; }
+
+  .scroll-cover,
+  .scroll-cover-placeholder { width: 36px; height: 36px; }
+  .scroll-title { font-size: 13px; }
+  .scroll-artist { font-size: 10px; }
+}

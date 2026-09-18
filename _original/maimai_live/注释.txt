@@ -1,0 +1,106 @@
+title 曲名
+artist 曲师
+genre 流派
+bpm 节拍
+version 版本(不用管)
+diffculiet 更多信息
+
+
+---
+diffculiet作为字典看待
+
+头key为铺面版本
+
+type 铺面版本   （standard-标准）（DX-DX）
+difficulty 序列(索引)
+level 等级
+level_value 细化等级
+note_designer 谱师
+version 版本(不用管)
+
+若key出现utage代表是宴会谱，
+
+以下为官方注释
+
+LevelIndex
+难度
+
+值	类型 说明
+0	int	BASIC
+1	int	ADVANCED
+2	int	EXPERT
+3	int	MASTER
+4	int	Re:MASTER
+以上分别使用绿、黄、红、紫、白紫色
+
+
+SongType
+谱面类型
+
+值	类型	说明
+standard	string	标准谱面
+dx	string	DX 谱面
+utage	string	宴会场谱面
+
+
+SongDifficulty
+谱面难度
+
+字段名	类型	说明
+type	SongType	谱面类型
+difficulty	LevelIndex	难度
+level	string	难度标级
+level_value	float	谱面定数
+note_designer	string	谱师
+version	int	谱面首次出现版本
+notes	Notes	值可空，谱面物量
+SongDifficultyUtage
+宴会场曲目谱面难度
+
+字段名	类型	说明
+kanji	string	谱面属性
+description	string	谱面描述
+is_buddy	bool	是否为 BUDDY 谱面
+notes	Notes 或 BuddyNotes	值可空，谱面物量
+提示
+is_buddy 为 true 时，notes 为 BuddyNotes。
+
+提示
+其他参数与 SongDifficulty 相同。
+
+Notes
+谱面物量
+
+字段名	类型	说明
+total	int	总物量
+tap	int	TAP 物量
+hold	int	HOLD 物量
+slide	int	SLIDE 物量
+touch	int	TOUCH 物量
+break	int	BREAK 物量
+BuddyNotes
+仅宴会场曲目，BUDDY 谱面物量
+
+字段名	类型	说明
+left	Notes	1P 谱面物量
+right	Notes	2P 谱面物量
+Genre
+乐曲分类
+
+字段名	类型	说明
+id	int	内部 ID
+title	string	分类标题
+genre	string	分类标题（日文）
+Version
+曲目版本
+
+字段名	类型	说明
+id	int	内部 ID
+title	string	版本标题
+version	int	主要版本 ID
+Alias
+曲目别名
+
+字段名	类型	说明
+song_id	int	曲目 ID
+aliases	string[]	曲目所有别名

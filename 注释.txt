@@ -1,0 +1,14 @@
+title 曲名
+artist 曲师
+category 流派
+bpm 节拍
+imageName图片名
+version 版本(不用管)
+diffculiet 更多信息
+sheets铺面信息
+	type 版本（分为td-标准和dx-DX）、
+	difficulty 难度、
+	level 等级、
+	internalLevel 拟合等级、
+	noteDesigner 谱师、
+#其他的不用管

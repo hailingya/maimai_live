@@ -1,0 +1,181 @@
+/* ════════════════════════════════════════════════
+   舞萌DX 直播展示页样式
+   ════════════════════════════════════════════════ */
+
+@font-face {
+  font-family: 'NewRodin';
+  src: url('/fonts/FOT_NewRodin_Pro_EB.otf') format('opentype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'SweiBell';
+  src: url('/fonts/SweiBellLegCJKsc-Black.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'SourceHanBold';
+  src: url('/fonts/SOURCEHANSANSSC-BOLD.OTF') format('opentype');
+}
+
+:root {
+  --c-basic: #1ec020;
+  --c-advanced: #ff9a00;
+  --c-expert: #ff3030;
+  --c-master: #9e45ec;
+  --c-remaster: #e0d0f5;
+  --c-utage: #ff69b4;
+  --bg: #0d0c14;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'SourceHanBold', 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: #fff;
+  overflow: hidden;
+  user-select: none;
+}
+
+.hidden { display: none !important; }
+
+#live-display {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  gap: 20px;
+}
+
+/* ── 当前歌曲 ── */
+.current-song {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex: 1;
+  min-height: 0;
+}
+
+/* ── 封面 ── */
+.cover-wrap {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,.6);
+}
+
+.cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cover-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  color: #444;
+  background: linear-gradient(135deg, #1a1925, #221f30);
+}
+
+/* ── 歌曲详情 ── */
+.song-detail {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.diff-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.diff-badge {
+  font-family: 'NewRodin', sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  padding: 4px 16px;
+  border-radius: 6px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 12px currentColor;
+}
+
+.diff-badge[data-diff="0"]  { color: var(--c-basic);     border: 2px solid var(--c-basic); }
+.diff-badge[data-diff="1"]  { color: var(--c-advanced);   border: 2px solid var(--c-advanced); }
+.diff-badge[data-diff="2"]  { color: var(--c-expert);     border: 2px solid var(--c-expert); }
+.diff-badge[data-diff="3"]  { color: var(--c-master);     border: 2px solid var(--c-master); }
+.diff-badge[data-diff="4"]  { color: var(--c-remaster);   border: 2px solid var(--c-remaster); }
+.diff-badge[data-diff="-1"] { color: var(--c-utage);      border: 2px solid var(--c-utage); }
+
+.level-text {
+  font-family: 'NewRodin', sans-serif;
+  font-size: 42px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.type-badge {
+  font-size: 14px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+.type-badge.std   { background: #333; color: #ccc; }
+.type-badge.dx    { background: #e94560; color: #fff; }
+.type-badge.utage { background: var(--c-utage); color: #fff; }
+
+.song-title {
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1.2;
+  word-break: break-word;
+  max-height: 80px;
+  overflow: hidden;
+}
+
+.sub-info {
+  font-size: 16px;
+  color: #8a87a3;
+}
+
+.meta-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.meta-chip {
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 4px;
+  background: rgba(255,255,255,.08);
+  color: #aaa;
+}
+
+/* ── 空状态 ── */
+.empty-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #444;
+}
+
+.empty-icon {
+  font-size: 64px;
+}
+
+.empty-state p { font-size: 18px; }

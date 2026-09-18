@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>直播展示</title>
+<link rel="stylesheet" href="/css/live.css">
+</head>
+<body>
+
+<div id="live-display">
+  <!-- 当前歌曲 -->
+  <div id="currentSong" class="current-song hidden">
+    <div class="cover-wrap">
+      <img id="cover" class="cover" src="" alt="" onerror="this.style.display='none'">
+      <div class="cover-placeholder" id="coverPlaceholder">♪</div>
+    </div>
+    <div class="song-detail">
+      <div class="diff-row">
+        <span id="diffBadge" class="diff-badge">MASTER</span>
+        <span id="levelText" class="level-text">12</span>
+        <span id="typeBadge" class="type-badge">标准</span>
+      </div>
+      <h1 id="songTitle" class="song-title"></h1>
+      <div class="sub-info">
+        <span id="artistText" class="artist-text"></span>
+      </div>
+      <div class="meta-row">
+        <span id="bpmText" class="meta-chip"></span>
+        <span id="noteDesignerText" class="meta-chip"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 空状态 -->
+  <div id="emptyState" class="empty-state">
+    <div class="empty-icon">♪</div>
+    <p>等待点歌…</p>
+  </div>
+
+  <!-- 暂停状态 -->
+  <div id="pausedState" class="paused-state hidden">
+    <div class="paused-icon">⏸</div>
+    <p class="paused-title">已暂停</p>
+    <p class="paused-sub">歌单保留中，恢复后继续播放</p>
+  </div>
+</div>
+
+<script src="/js/live.js"></script>
+</body>
+</html>

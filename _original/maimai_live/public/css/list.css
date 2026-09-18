@@ -1,0 +1,189 @@
+/* ════════════════════════════════════════════════
+   舞萌DX 歌单列表页样式
+   ════════════════════════════════════════════════ */
+
+@font-face {
+  font-family: 'NewRodin';
+  src: url('/fonts/FOT_NewRodin_Pro_EB.otf') format('opentype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'SourceHanBold';
+  src: url('/fonts/SOURCEHANSANSSC-BOLD.OTF') format('opentype');
+}
+
+:root {
+  --c-basic: #1ec020;
+  --c-advanced: #ff9a00;
+  --c-expert: #ff3030;
+  --c-master: #9e45ec;
+  --c-remaster: #e0d0f5;
+  --c-utage: #ff69b4;
+  --bg: #0d0c14;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'SourceHanBold', 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: #fff;
+  overflow: hidden;
+  user-select: none;
+}
+
+#list-display {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 24px;
+}
+
+/* ── 头部 ── */
+.list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  flex-shrink: 0;
+}
+
+.list-header h1 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.count-badge {
+  font-size: 14px;
+  color: #8a87a3;
+  background: rgba(255,255,255,.06);
+  padding: 2px 10px;
+  border-radius: 6px;
+}
+
+/* ── 列表 ── */
+.playlist {
+  flex: 1;
+  overflow-y: auto;
+  padding-top: 8px;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  background: rgba(255,255,255,.03);
+  border: 1px solid transparent;
+  transition: border-color .15s;
+}
+
+.list-item.current {
+  border-color: var(--c-master);
+  background: rgba(158,69,236,.08);
+}
+
+.list-index {
+  font-family: 'NewRodin', sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  color: #555;
+  min-width: 32px;
+  text-align: center;
+}
+
+.list-item.current .list-index {
+  color: var(--c-master);
+}
+
+.list-diff-bar {
+  width: 5px;
+  height: 32px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.list-diff-bar[data-diff="0"]  { background: var(--c-basic); }
+.list-diff-bar[data-diff="1"]  { background: var(--c-advanced); }
+.list-diff-bar[data-diff="2"]  { background: var(--c-expert); }
+.list-diff-bar[data-diff="3"]  { background: var(--c-master); }
+.list-diff-bar[data-diff="4"]  { background: var(--c-remaster); }
+.list-diff-bar[data-diff="-1"] { background: var(--c-utage); }
+
+.list-song-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.list-song-title {
+  font-size: 15px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.list-song-meta {
+  font-size: 12px;
+  color: #8a87a3;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.list-type-badge {
+  font-size: 9px;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-weight: 700;
+}
+
+.list-type-badge.std   { background: #333; color: #ccc; }
+.list-type-badge.dx    { background: #e94560; color: #fff; }
+.list-type-badge.utage { background: var(--c-utage); color: #fff; }
+
+.list-diff-name {
+  font-family: 'NewRodin', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.list-diff-name[data-diff="0"]  { color: var(--c-basic); }
+.list-diff-name[data-diff="1"]  { color: var(--c-advanced); }
+.list-diff-name[data-diff="2"]  { color: var(--c-expert); }
+.list-diff-name[data-diff="3"]  { color: var(--c-master); }
+.list-diff-name[data-diff="4"]  { color: var(--c-remaster); }
+.list-diff-name[data-diff="-1"] { color: var(--c-utage); }
+
+.list-level {
+  font-family: 'NewRodin', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.list-level[data-diff="0"]  { color: var(--c-basic); }
+.list-level[data-diff="1"]  { color: var(--c-advanced); }
+.list-level[data-diff="2"]  { color: var(--c-expert); }
+.list-level[data-diff="3"]  { color: var(--c-master); }
+.list-level[data-diff="4"]  { color: var(--c-remaster); }
+.list-level[data-diff="-1"] { color: var(--c-utage); }
+
+/* ── 空状态 ── */
+.empty-hint {
+  text-align: center;
+  padding: 60px 20px;
+  color: #444;
+  font-size: 18px;
+}
+
+/* ── 滚动条 ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 3px; }
